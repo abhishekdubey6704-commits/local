@@ -1,332 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TDS | The Dharma Saga</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        color-scheme: light;
-        --bg-dark: #1c1915;
-        --bg-light: #f5ecd8;
-        --accent: #c49c48;
-        --accent-strong: #f0c36a;
-        --text-main: #fdf7e0;
-        --text-muted: #d9c7a1;
-        --shadow: rgba(0, 0, 0, 0.45);
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#2a101c" />
+  <meta name="description" content="Counting down to the wedding of Shivi and Abhi — 25 January 2027. One date, two hearts, forever." />
+  <title>Shivi & Abhi — The Beginning of Forever</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --wine: #2a101c;
+      --wine-2: #471b2d;
+      --rose: #d98d9e;
+      --blush: #f5d8d9;
+      --gold: #d9b777;
+      --cream: #fff5eb;
+      --muted: #e9cbd0;
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "Montserrat", sans-serif;
+      --script: "Great Vibes", cursive;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; min-height: 100vh; color: var(--cream); font-family: var(--sans);
+      background: var(--wine); overflow-x: hidden;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: -3;
+      background:
+        radial-gradient(ellipse at 15% 15%, rgba(217,141,158,.23), transparent 35%),
+        radial-gradient(ellipse at 85% 80%, rgba(217,183,119,.16), transparent 38%),
+        linear-gradient(145deg, #1c0b14, #421b2d 52%, #1e0c16);
+    }
+    .grain { position: fixed; inset: 0; z-index: 5; pointer-events: none; opacity: .12; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E"); }
+    .ambient { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: -1; }
+    .orb { position: absolute; border: 1px solid rgba(217,183,119,.2); border-radius: 50%; animation: float 16s ease-in-out infinite; }
+    .orb.one { width: 390px; height: 390px; top: -190px; left: -130px; }
+    .orb.two { width: 520px; height: 520px; right: -300px; bottom: -230px; animation-delay: -7s; }
+    .petal { position: absolute; top: -12vh; width: 13px; height: 19px; border-radius: 100% 0 100% 0; background: linear-gradient(135deg,#f8dadd,#bd657c); opacity: .55; animation: fall linear infinite; filter: drop-shadow(0 0 5px rgba(255,190,205,.25)); }
+    .petal:nth-child(1){left:8%;animation-duration:17s;animation-delay:-5s}
+    .petal:nth-child(2){left:22%;animation-duration:21s;animation-delay:-13s;transform:scale(.7)}
+    .petal:nth-child(3){left:39%;animation-duration:19s;animation-delay:-2s}
+    .petal:nth-child(4){left:57%;animation-duration:23s;animation-delay:-16s;transform:scale(.8)}
+    .petal:nth-child(5){left:74%;animation-duration:18s;animation-delay:-8s}
+    .petal:nth-child(6){left:91%;animation-duration:22s;animation-delay:-11s;transform:scale(.65)}
+    @keyframes fall { to { transform: translate3d(90px,115vh,0) rotate(560deg); } }
+    @keyframes float { 50% { transform: translate3d(25px,-25px,0) scale(1.04); } }
+    @keyframes pulse { 50% { transform: scale(1.12); opacity: .65; } }
+    @keyframes reveal { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+    .page { width: min(1100px, calc(100% - 36px)); margin: 0 auto; padding: 30px 0 55px; }
+    nav { display:flex; justify-content:space-between; align-items:center; gap:18px; color:var(--muted); font-size:.68rem; letter-spacing:.22em; text-transform:uppercase; }
+    .nav-mark { color:var(--gold); font-family:var(--serif); font-size:1.1rem; letter-spacing:.12em; }
+    .hero { min-height: calc(100svh - 80px); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:65px 15px 45px; position:relative; animation:reveal 1.2s ease both; }
+    .eyebrow { color:var(--gold); letter-spacing:.34em; text-transform:uppercase; font-size:.66rem; font-weight:500; }
+    .ornament { display:flex; align-items:center; gap:14px; justify-content:center; color:var(--gold); margin:24px 0 14px; }
+    .ornament::before,.ornament::after { content:""; width:65px; height:1px; background:linear-gradient(90deg,transparent,var(--gold)); }
+    .ornament::after { transform:rotate(180deg); }
+    .monogram { width:78px; height:78px; border:1px solid rgba(217,183,119,.65); border-radius:50%; display:grid; place-items:center; color:var(--gold); font: 1.65rem var(--serif); box-shadow:0 0 0 7px rgba(217,183,119,.055),0 0 40px rgba(217,183,119,.12); }
+    h1 { margin:14px 0 0; font: clamp(4.4rem,12vw,8.7rem)/.88 var(--script); color:#f8dfe0; font-weight:400; text-shadow:0 8px 40px rgba(0,0,0,.22); }
+    .amp { display:block; font:italic clamp(1.4rem,3vw,2rem) var(--serif); color:var(--gold); margin:16px 0 10px; }
+    .hero-note { color:var(--muted); font:italic clamp(1.05rem,2vw,1.35rem) var(--serif); letter-spacing:.04em; margin:24px 0 0; }
+    .date-pill { display:inline-flex; align-items:center; gap:13px; margin-top:34px; padding:13px 22px; border:1px solid rgba(217,183,119,.55); border-radius:99px; color:var(--cream); font:500 .7rem var(--sans); letter-spacing:.22em; text-transform:uppercase; background:rgba(255,255,255,.035); backdrop-filter:blur(8px); }
+    .date-pill span { color:var(--gold); }
+    .scroll-cue { position:absolute; bottom:12px; color:rgba(233,203,208,.65); font-size:.58rem; letter-spacing:.25em; text-transform:uppercase; }
+    .scroll-cue::after { content:""; display:block; width:1px; height:32px; background:linear-gradient(var(--gold),transparent); margin:12px auto 0; }
+    .section { text-align:center; padding:70px 10px; }
+    .section-kicker { color:var(--gold); font-size:.62rem; letter-spacing:.32em; text-transform:uppercase; }
+    h2 { font: clamp(2.6rem,6vw,4.4rem)/1.05 var(--serif); font-weight:400; margin:14px 0 12px; color:#f7e5df; }
+    .section-copy { max-width:570px; margin:0 auto; color:var(--muted); font:italic 1.15rem/1.7 var(--serif); }
+    .countdown-wrap { margin:25px auto 0; max-width:850px; padding:clamp(22px,5vw,48px); border:1px solid rgba(217,183,119,.38); border-radius:5px; background:linear-gradient(135deg,rgba(255,255,255,.055),rgba(255,255,255,.015)); box-shadow:0 25px 90px rgba(0,0,0,.22),inset 0 0 50px rgba(217,141,158,.035); position:relative; }
+    .countdown-wrap::before,.countdown-wrap::after { content:"✦"; position:absolute; color:var(--gold); font-size:1rem; opacity:.8; }
+    .countdown-wrap::before { top:13px; left:16px; } .countdown-wrap::after { bottom:13px; right:16px; }
+    .countdown { display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(8px,2vw,22px); }
+    .time { padding:18px 8px; }
+    .number { display:block; font:clamp(2.6rem,7vw,5rem)/1 var(--serif); color:var(--gold); font-variant-numeric:tabular-nums; text-shadow:0 0 25px rgba(217,183,119,.17); }
+    .unit { display:block; margin-top:12px; color:var(--muted); font-size:.58rem; letter-spacing:.24em; text-transform:uppercase; }
+    .heart { color:var(--rose); display:inline-block; font-size:1.4rem; margin:28px 0 5px; animation:pulse 2.2s ease-in-out infinite; }
+    .promise { max-width:650px; margin:0 auto; border-top:1px solid rgba(217,183,119,.25); border-bottom:1px solid rgba(217,183,119,.25); padding:32px 15px; }
+    .promise p { color:#f2dadd; font:italic clamp(1.4rem,3vw,2rem)/1.5 var(--serif); margin:0; }
+    .promise small { display:block; color:var(--gold); margin-top:16px; letter-spacing:.24em; text-transform:uppercase; font-size:.58rem; }
+    .footer { text-align:center; padding:55px 10px 10px; color:rgba(233,203,208,.68); font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; }
+    .footer strong { display:block; color:var(--gold); font:2.4rem var(--script); letter-spacing:0; text-transform:none; margin:12px 0 8px; }
+    .save-date { display:inline-block; margin-top:28px; padding:13px 24px; border:1px solid rgba(217,183,119,.6); color:var(--gold); text-decoration:none; text-transform:uppercase; letter-spacing:.16em; font-size:.62rem; transition:all .3s ease; }
+    .save-date:hover { background:var(--gold); color:var(--wine); box-shadow:0 8px 30px rgba(217,183,119,.2); }
+    @media(max-width:600px) {
+      .page { width:calc(100% - 24px); padding-top:22px; }
+      nav { font-size:.55rem; letter-spacing:.12em; }
+      .hero { min-height:82svh; padding-top:55px; }
+      .countdown { grid-template-columns:repeat(2,1fr); }
+      .time { padding:17px 5px; }
+      .unit { margin-top:8px; }
+      .section { padding:55px 4px; }
+      .date-pill { font-size:.58rem; letter-spacing:.14em; padding:12px 15px; }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <div class="orb one"></div><div class="orb two"></div>
+    <i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="page">
+    <nav aria-label="Wedding countdown">
+      <span>Two hearts · One promise</span>
+      <span class="nav-mark">S <span style="color:var(--rose)">&</span> A</span>
+      <span>25 · 01 · 2027</span>
+    </nav>
 
-      * {
-        box-sizing: border-box;
-      }
+    <header class="hero">
+      <div class="eyebrow">A celebration of love</div>
+      <div class="ornament"><div class="monogram">S<span style="color:var(--rose)">&</span>A</div></div>
+      <h1>Shivi</h1>
+      <span class="amp">&</span>
+      <h1>Abhi</h1>
+      <p class="hero-note">Two souls, one beautiful forever.</p>
+      <div class="date-pill"><span>♥</span> Monday <span>·</span> 25 January 2027 <span>♥</span></div>
+      <div class="scroll-cue">Our forever begins</div>
+    </header>
 
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-      }
-
-      body {
-        margin: 0;
-        min-height: 100vh;
-        font-family: "Crimson Text", "Times New Roman", serif;
-        background: radial-gradient(circle at top, rgba(244, 226, 190, 0.75), transparent 60%),
-          radial-gradient(circle at bottom, rgba(38, 30, 21, 0.8), rgba(10, 9, 8, 0.95));
-        color: var(--text-main);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem;
-      }
-
-      .scroll-backdrop {
-        position: fixed;
-        inset: 0;
-        background-image: url("https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?auto=format&fit=crop&w=1600&q=60");
-        background-size: cover;
-        background-position: center;
-        opacity: 0.2;
-        filter: grayscale(60%);
-        z-index: -2;
-      }
-
-      .texture-overlay {
-        position: fixed;
-        inset: 0;
-        background: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0, rgba(255, 255, 255, 0.04) 2px, transparent 2px, transparent 4px);
-        mix-blend-mode: soft-light;
-        z-index: -1;
-      }
-
-      main {
-        width: min(800px, 100%);
-        border: 1px solid rgba(196, 156, 72, 0.4);
-        border-radius: 20px;
-        padding: clamp(2rem, 4vw, 3rem);
-        background: rgba(15, 13, 11, 0.85);
-        box-shadow: 0 25px 60px var(--shadow);
-        position: relative;
-        overflow: hidden;
-      }
-
-      main::before,
-      main::after {
-        content: "";
-        position: absolute;
-        inset: 20px;
-        border: 1px solid rgba(196, 156, 72, 0.35);
-        pointer-events: none;
-      }
-
-      main::after {
-        inset: 35px;
-        border-color: rgba(196, 156, 72, 0.15);
-        filter: blur(0.3px);
-      }
-
-      header {
-        text-align: center;
-        margin-bottom: 2.5rem;
-      }
-
-      .crest {
-        width: 90px;
-        height: 90px;
-        margin: 0 auto 1.5rem;
-        border: 2px solid var(--accent);
-        border-radius: 50%;
-        display: grid;
-        place-items: center;
-        position: relative;
-      }
-
-      .crest span {
-        font-family: "Cinzel", serif;
-        font-size: 2.4rem;
-        letter-spacing: 0.2rem;
-        color: var(--accent-strong);
-      }
-
-      h1 {
-        font-family: "Cinzel", serif;
-        font-size: clamp(2.5rem, 4vw, 3.8rem);
-        letter-spacing: 0.15rem;
-        text-transform: uppercase;
-        margin: 0 0 1rem;
-      }
-
-      .subhead {
-        color: var(--text-muted);
-        font-size: 1.1rem;
-        max-width: 520px;
-        margin: 0 auto;
-        line-height: 1.6;
-      }
-
-      .divider {
-        width: 120px;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--accent), transparent);
-        margin: 2.5rem auto;
-      }
-
-      .countdown {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 1rem;
-        margin-bottom: 2.5rem;
-      }
-
-      .time-card {
-        border: 1px solid rgba(196, 156, 72, 0.5);
-        border-radius: 16px;
-        padding: 1.5rem 1rem;
-        text-align: center;
-        background: rgba(255, 255, 255, 0.03);
-      }
-
-      .time-card strong {
-        display: block;
-        font-size: 2rem;
-        font-family: "Cinzel", serif;
-        color: var(--accent-strong);
-      }
-
-      .time-card span {
-        text-transform: uppercase;
-        letter-spacing: 0.2rem;
-        font-size: 0.8rem;
-        color: var(--text-muted);
-      }
-
-      .cta {
-        text-align: center;
-      }
-
-      .cta p {
-        margin-bottom: 1rem;
-        color: var(--text-muted);
-      }
-
-      .cta form {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        justify-content: center;
-      }
-
-      .cta input[type="email"] {
-        padding: 0.85rem 1.1rem;
-        border-radius: 30px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        background: rgba(0, 0, 0, 0.3);
-        color: var(--text-main);
-        min-width: 220px;
-        font-size: 1rem;
-      }
-
-      .cta button {
-        padding: 0.85rem 1.5rem;
-        border-radius: 30px;
-        border: none;
-        background: linear-gradient(120deg, var(--accent), var(--accent-strong));
-        color: var(--bg-dark);
-        font-size: 1rem;
-        font-family: "Cinzel", serif;
-        letter-spacing: 0.12rem;
-        text-transform: uppercase;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        cursor: pointer;
-      }
-
-      .cta button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(196, 156, 72, 0.35);
-      }
-
-      footer {
-        margin-top: 3rem;
-        text-align: center;
-        font-size: 0.9rem;
-        color: var(--text-muted);
-        letter-spacing: 0.15rem;
-      }
-
-      footer span {
-        color: var(--accent-strong);
-      }
-
-      @media (max-width: 600px) {
-        main::before,
-        main::after {
-          inset: 12px;
-        }
-
-        .cta form {
-          flex-direction: column;
-        }
-
-        .cta input,
-        .cta button {
-          width: 100%;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="scroll-backdrop" aria-hidden="true"></div>
-    <div class="texture-overlay" aria-hidden="true"></div>
     <main>
-      <header>
-        <div class="crest" aria-hidden="true">
-          <span>TDS</span>
+      <section class="section" aria-labelledby="countdown-title">
+        <div class="section-kicker">The day we've been dreaming of</div>
+        <h2 id="countdown-title">Counting every heartbeat</h2>
+        <p class="section-copy">A thousand little moments have led us here. Soon, a new chapter begins — with a promise to choose each other, every day.</p>
+        <div class="countdown-wrap">
+          <div class="countdown" role="timer" aria-live="off" aria-label="Time remaining until 25 January 2027">
+            <div class="time"><strong class="number" id="days">000</strong><span class="unit">Days</span></div>
+            <div class="time"><strong class="number" id="hours">00</strong><span class="unit">Hours</span></div>
+            <div class="time"><strong class="number" id="minutes">00</strong><span class="unit">Minutes</span></div>
+            <div class="time"><strong class="number" id="seconds">00</strong><span class="unit">Seconds</span></div>
+          </div>
+          <div class="heart" aria-hidden="true">♥</div>
         </div>
-        <p class="subhead">House of Bravery</p>
-        <h1>Unforgettable Legendary Battles</h1>
-        <p class="subhead">
-            The saga of valor and honor returns. Prepare for the grand reopening on June 21, 2026, and witness the legends come alive once more.
-        </p>
-      </header>
-
-      <div class="divider" aria-hidden="true"></div>
-
-      <section class="countdown" aria-label="Countdown until grand reopening">
-        <article class="time-card">
-          <strong id="days">0</strong>
-          <span>Days</span>
-        </article>
-        <article class="time-card">
-          <strong id="hours">0</strong>
-          <span>Hours</span>
-        </article>
-        <article class="time-card">
-          <strong id="minutes">0</strong>
-          <span>Minutes</span>
-        </article>
-        <article class="time-card">
-          <strong id="seconds">0</strong>
-          <span>Seconds</span>
-        </article>
       </section>
 
-      <section class="cta" aria-label="Register interest">
-        <p>Enter the registry to be the first summoned for the unveiling.</p>
-        <form>
-          <label class="sr-only" for="email">Email address</label>
-          <input type="email" id="email" name="email" placeholder="support@thedharmasaga.online" required />
-          <button type="submit">Notify Me</button>
-        </form>
+      <section class="section">
+        <div class="promise">
+          <p>“In your smile, I found my home.<br>In your heart, I found my forever.”</p>
+          <small>Shivi & Abhi · 25 January 2027</small>
+        </div>
+        <a class="save-date" id="saveDate" href="#">Save our date</a>
       </section>
-
-      <footer>
-        Crafted with honor by <span>Abhishek Dubey</span> &middot; July-2026
-      </footer>
     </main>
 
-    <script>
-      // Basic countdown for June 21, 2027
-      const targetDate = new Date("2026-06-21T00:00:00").getTime();
-      const units = {
-        days: 86400000,
-        hours: 3600000,
-        minutes: 60000,
-        seconds: 1000,
-      };
+    <footer class="footer">
+      With love, for the beginning of forever
+      <strong>Shivi & Abhi</strong>
+      25 January 2027
+    </footer>
+  </div>
+  <script>
+    // Wedding date at the start of 25 January 2027, India Standard Time.
+    const weddingDate = new Date("2027-01-25T00:00:00+05:30").getTime();
+    const fields = {
+      days: document.getElementById("days"),
+      hours: document.getElementById("hours"),
+      minutes: document.getElementById("minutes"),
+      seconds: document.getElementById("seconds")
+    };
 
-      function updateCountdown() {
-        const now = Date.now();
-        const distance = Math.max(targetDate - now, 0);
-
-        document.getElementById("days").textContent = Math.floor(distance / units.days);
-        document.getElementById("hours").textContent = Math.floor((distance % units.days) / units.hours);
-        document.getElementById("minutes").textContent = Math.floor((distance % units.hours) / units.minutes);
-        document.getElementById("seconds").textContent = Math.floor((distance % units.minutes) / units.seconds);
-
-        if (distance === 0) {
-          clearInterval(timer);
-        }
+    function updateCountdown() {
+      const remaining = Math.max(0, weddingDate - Date.now());
+      const day = 86400000, hour = 3600000, minute = 60000;
+      fields.days.textContent = String(Math.floor(remaining / day)).padStart(3, "0");
+      fields.hours.textContent = String(Math.floor((remaining % day) / hour)).padStart(2, "0");
+      fields.minutes.textContent = String(Math.floor((remaining % hour) / minute)).padStart(2, "0");
+      fields.seconds.textContent = String(Math.floor((remaining % minute) / 1000)).padStart(2, "0");
+      if (remaining === 0) {
+        document.getElementById("countdown-title").textContent = "Today, forever begins";
       }
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 
-      const timer = setInterval(updateCountdown, 1000);
-      updateCountdown();
-
-      // Prevent default submit for placeholder form
-      document.querySelector("form").addEventListener("submit", (event) => {
-        event.preventDefault();
-        alert("Your place in the registry is reserved.");
-      });
-    </script>
-  </body>
+    // A downloadable calendar reminder; no backend or external service required.
+    const calendarEvent = [
+      "BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Shivi and Abhi//Wedding Date//EN",
+      "BEGIN:VEVENT","UID:shivi-abhi-wedding-20270125@local",
+      "DTSTAMP:20261116T000000Z","DTSTART:20270124T183000Z","DTEND:20270125T183000Z",
+      "SUMMARY:Shivi & Abhi — Wedding Day","DESCRIPTION:Celebrating the beginning of forever.",
+      "END:VEVENT","END:VCALENDAR"
+    ].join("\r\n");
+    const saveLink = document.getElementById("saveDate");
+    const calendarBlob = new Blob([calendarEvent], { type: "text/calendar;charset=utf-8" });
+    saveLink.href = URL.createObjectURL(calendarBlob);
+    saveLink.download = "Shivi-and-Abhi-Wedding.ics";
+  </script>
+</body>
 </html>
